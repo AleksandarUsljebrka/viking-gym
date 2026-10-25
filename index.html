@@ -1258,9 +1258,9 @@
               <div class="coach-img" role="img" aria-label="Trener Marko Petrović"></div>
               <div class="coach-info">
                 <dl>
-                  <div><dt>Trenira ljude</dt><dd>11 godina</dd></div>
+                  <div><dt>Iskustvo</dt><dd>11 godina</dd></div>
                   <div><dt>Edukacija</dt><dd>Fakultet sporta i fizičkog vaspitanja, Beograd. Sertifikat NSCA-CSCS.</dd></div>
-                  <div><dt>Najviše pomaže</dt><dd>Onima koji hoće veći čučanj, bench i mrtvo dizanje ili prvo takmičenje.</dd></div>
+                  <div><dt>Najviše pomaže</dt><dd>Onima koji treniraju snagu i powerlifting, rekreativno ili za takmičenje.</dd></div>
                 </dl>
               </div>
               <span class="coach-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></span>
@@ -1273,9 +1273,9 @@
               <div class="coach-img" role="img" aria-label="Trener Stefan Jovanović"></div>
               <div class="coach-info">
                 <dl>
-                  <div><dt>Trenira ljude</dt><dd>8 godina</dd></div>
+                  <div><dt>Iskustvo</dt><dd>8 godina</dd></div>
                   <div><dt>Edukacija</dt><dd>Viša medicinska škola, smer fizioterapija. Kurs korektivnog vežbanja.</dd></div>
-                  <div><dt>Najviše pomaže</dt><dd>Ljudima posle povrede kolena, leđa ili ramena, kad je fizioterapija gotova.</dd></div>
+                  <div><dt>Najviše pomaže</dt><dd>U rehabilitaciji zglobova i leđa nakon povreda ili postoperativnoj rehabilitaciji.</dd></div>
                 </dl>
               </div>
               <span class="coach-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></span>
@@ -1288,7 +1288,7 @@
               <div class="coach-img" role="img" aria-label="Trener Nikola Ilić"></div>
               <div class="coach-info">
                 <dl>
-                  <div><dt>Trenira ljude</dt><dd>9 godina</dd></div>
+                  <div><dt>Iskustvo</dt><dd>9 godina</dd></div>
                   <div><dt>Edukacija</dt><dd>Fakultet sporta, Novi Sad. Kondicioni trener u omladinskom fudbalu.</dd></div>
                   <div><dt>Najviše pomaže</dt><dd>Sportistima pred sezonu i rekreativcima koji igraju fudbal, košarku ili tenis.</dd></div>
                 </dl>
@@ -1303,7 +1303,7 @@
               <div class="coach-img" role="img" aria-label="Trener Luka Stanković"></div>
               <div class="coach-info">
                 <dl>
-                  <div><dt>Trenira ljude</dt><dd>6 godina</dd></div>
+                  <div><dt>Iskustvo</dt><dd>6 godina</dd></div>
                   <div><dt>Edukacija</dt><dd>Licenca za personalnog trenera. Kurs iz sportske ishrane.</dd></div>
                   <div><dt>Najviše pomaže</dt><dd>Onima koji kreću od nule i treba im neko ko prati i trening i ishranu.</dd></div>
                 </dl>
@@ -1559,6 +1559,27 @@
 
   <script>
     (function () {
+      // Stranica uvek počinje od vrha, i kad adresa ima #sekciju
+      // ili kad pregledač hoće da vrati staru poziciju
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      if (location.hash) {
+        history.replaceState(null, "", location.pathname + location.search);
+        window.scrollTo(0, 0);
+        window.addEventListener("load", function () { window.scrollTo(0, 0); });
+      }
+
+      // Linkovi iz menija skroluju do sekcije bez #sekcije u adresi
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      document.addEventListener("click", function (e) {
+        var link = e.target.closest('a[href^="#"]');
+        if (!link) return;
+        var id = link.getAttribute("href").slice(1);
+        var target = id && document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth" });
+      });
+
       var nav = document.getElementById("nav");
       var toggle = document.getElementById("nav-toggle");
       var links = document.getElementById("nav-links");
