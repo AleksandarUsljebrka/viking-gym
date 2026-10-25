@@ -454,6 +454,7 @@
     .coach {
       position: relative;
       cursor: default;
+      touch-action: manipulation;
       outline-offset: 4px;
       border-radius: var(--radius);
     }
@@ -1051,6 +1052,7 @@
         margin: 0 calc(var(--gutter) * -1);
         padding: 0 var(--gutter) 4px;
         overflow-x: auto;
+        overflow-y: hidden;
         overscroll-behavior-x: contain;
         scroll-snap-type: x mandatory;
         scroll-padding: 0 var(--gutter);
@@ -1596,16 +1598,31 @@
         });
       });
 
-      // Detalji o treneru na dodir (telefon nema hover)
-      var noHover = window.matchMedia("(hover: none)");
+      // Detalji o treneru na dodir. Gledamo čime je kartica dodirnuta,
+      // jer neki telefoni za sebe tvrde da imaju hover.
+      var lastPointer = "mouse";
+      document.addEventListener("pointerdown", function (e) {
+        lastPointer = e.pointerType || "mouse";
+      }, true);
+
       var coachCards = document.querySelectorAll(".coach");
+      function closeCoaches(except) {
+        coachCards.forEach(function (c) {
+          if (c !== except) c.classList.remove("is-open");
+        });
+      }
+
       coachCards.forEach(function (card) {
         card.addEventListener("click", function () {
-          if (!noHover.matches) return;
-          var open = !card.classList.contains("is-open");
-          coachCards.forEach(function (c) { c.classList.remove("is-open"); });
-          card.classList.toggle("is-open", open);
+          if (lastPointer === "mouse") return;
+          closeCoaches(card);
+          card.classList.toggle("is-open");
         });
+      });
+
+      // Dodir van kartice zatvara otvorene detalje
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest(".coach")) closeCoaches(null);
       });
 
       // Forma i provera polja
