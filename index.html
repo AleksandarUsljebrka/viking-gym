@@ -43,7 +43,6 @@
 
       --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 
-      --coach: url("assets/img/trener.jpg");
       --photo: url("assets/img/hero.jpg");
     }
 
@@ -472,7 +471,9 @@
     .coach-img {
       position: absolute;
       inset: 0;
-      background: var(--coach) center top / cover no-repeat;
+      background-position: center top;
+      background-size: cover;
+      background-repeat: no-repeat;
       transition: transform 400ms var(--ease-out);
     }
 
@@ -1255,7 +1256,7 @@
         <div class="coaches">
           <div class="coach reveal" tabindex="0">
             <div class="coach-media">
-              <div class="coach-img" role="img" aria-label="Trener Marko Petrović"></div>
+              <div class="coach-img" role="img" aria-label="Trener Marko Petrović" style="background-image: url('assets/img/treneri/marko.jpg')"></div>
               <div class="coach-info">
                 <dl>
                   <div><dt>Iskustvo</dt><dd>11 godina</dd></div>
@@ -1270,7 +1271,7 @@
           </div>
           <div class="coach reveal" tabindex="0">
             <div class="coach-media">
-              <div class="coach-img" role="img" aria-label="Trener Stefan Jovanović"></div>
+              <div class="coach-img" role="img" aria-label="Trenerka Milica Jovanović" style="background-image: url('assets/img/treneri/milica.jpg')"></div>
               <div class="coach-info">
                 <dl>
                   <div><dt>Iskustvo</dt><dd>8 godina</dd></div>
@@ -1280,12 +1281,12 @@
               </div>
               <span class="coach-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></span>
             </div>
-            <div class="coach-name">Stefan Jovanović</div>
+            <div class="coach-name">Milica Jovanović</div>
             <div class="coach-role">Povratak posle povrede</div>
           </div>
           <div class="coach reveal" tabindex="0">
             <div class="coach-media">
-              <div class="coach-img" role="img" aria-label="Trener Nikola Ilić"></div>
+              <div class="coach-img" role="img" aria-label="Trener Nikola Ilić" style="background-image: url('assets/img/treneri/nikola.jpg')"></div>
               <div class="coach-info">
                 <dl>
                   <div><dt>Iskustvo</dt><dd>9 godina</dd></div>
@@ -1300,7 +1301,7 @@
           </div>
           <div class="coach reveal" tabindex="0">
             <div class="coach-media">
-              <div class="coach-img" role="img" aria-label="Trener Luka Stanković"></div>
+              <div class="coach-img" role="img" aria-label="Trener Luka Stanković" style="background-image: url('assets/img/treneri/luka.jpg')"></div>
               <div class="coach-info">
                 <dl>
                   <div><dt>Iskustvo</dt><dd>6 godina</dd></div>

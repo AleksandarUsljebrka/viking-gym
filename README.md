@@ -12,7 +12,7 @@ assets/favicon.svg     ikonica u tabu pregledača
 assets/img/hero.jpg    pozadina naslovne sekcije
 assets/img/sala-tegovi.jpg    slika u sekciji O nama
 assets/img/sala-prozori.jpg   pozadina iza kontakt forme
-assets/img/trener.jpg  fotografija trenera
+assets/img/treneri/   fotografije trenera, jedna po kartici
 .nojekyll              GitHub Pages servira fajlove bez obrade
 ```
 
@@ -51,7 +51,7 @@ Ovo su privremeni podaci:
 - **Cene** u cenovniku (3.900, 4.900, 16.000 i 2.200 RSD)
 - **Adrese i radno vreme** sala u sekciji Lokacije. Ulice postoje, brojevi su izmišljeni.
 - **Telefon, email i Instagram** u kontakt sekciji
-- **Imena, iskustvo i edukacija trenera** i njihove fotografije. Sada je ista fotografija na sve četiri kartice.
+- **Imena, iskustvo i edukacija trenera** i njihove fotografije. Sada svaki trener ima svoju fotografiju.
 - **Fotografije sala.** `sala-tegovi.jpg` i `sala-prozori.jpg` su sa Pexelsa, a `hero.jpg` je generisana AI slika. Najbolje ih je zameniti fotografijama vaših sala.
 
 Forma za upis proverava polja, ali podatke ne šalje nigde. Za pravo slanje poveži je sa servisom kao što je Formspree, ili sa svojim bekendom.
