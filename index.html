@@ -27,16 +27,16 @@
       --line: #2a2622;
       --text: #ece8e2;
       --muted: #9a928a;
-      --accent: #e2741f;
-      --accent-hover: #f0863a;
+      --accent: #8fafc4;
+      --accent-hover: #a9c3d3;
       --on-accent: #0d0c0b;
       --placeholder: #2b2825;
 
       --font-head: "Bebas Neue", "Arial Narrow", sans-serif;
       --font-body: "Inter", system-ui, sans-serif;
 
-      --max: none;
-      --gutter: clamp(24px, 4vw, 80px);
+      --max: 1200px;
+      --gutter: clamp(24px, 4vw, 48px);
       --section-y: 120px;
       --radius: 6px;
       --nav-h: 72px;
@@ -78,7 +78,7 @@
       margin: 0;
     }
 
-    h2 { font-size: clamp(44px, 6vw, 76px); }
+    h2 { font-size: clamp(44px, 6vw, 76px); text-wrap: balance; }
     h3 { font-size: 30px; line-height: 1.05; }
 
     p { margin: 0 0 1em; max-width: 65ch; }
@@ -113,11 +113,11 @@
 
     .section-head {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: end;
-      margin-bottom: 72px;
+      gap: 24px;
+      margin-bottom: 64px;
     }
+
+    .section-head .lead { max-width: 60ch; }
 
     /* ---------- Dugmad ---------- */
     .btn {
@@ -285,7 +285,8 @@
     .hero .container { position: relative; width: 100%; }
 
     .hero h1 {
-      font-size: clamp(56px, min(11vw, 13svh), 200px);
+      font-size: clamp(40px, min(14.5vw, 13svh), 150px);
+      white-space: nowrap;
       line-height: 0.88;
       margin-bottom: 32px;
     }
@@ -409,7 +410,7 @@
       align-items: start;
     }
 
-    .about-text h2 { margin-bottom: 36px; }
+    .about-head { margin-bottom: 56px; }
 
     .about-text p { color: #c9c2b9; }
 
@@ -1007,7 +1008,7 @@
 
     .field select {
       appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23e2741f' stroke-width='1.6'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%238fafc4' stroke-width='1.6'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 16px center;
       padding-right: 44px;
@@ -1314,7 +1315,7 @@
   <header class="nav" id="nav">
     <div class="container">
       <a href="#pocetak" class="logo" aria-label="Viking Gym, početak">
-        <svg viewBox="0 0 40 40" fill="none" stroke="#e2741f" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" stroke="#8fafc4" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 6c0 6 3 10 8 11M32 6c0 6-3 10-8 11"/>
           <path d="M12 18h16v8l-4 4v6h-8v-6l-4-4z"/>
           <path d="M16 23h3M21 23h3M20 26v7"/>
@@ -1353,14 +1354,13 @@
         <span class="eyebrow">Viking Gym · Beograd i Novi Sad</span>
 
         <h1>
-          <span class="line"><span>Postani</span></span>
-          <span class="line"><span>najbolja verzija</span></span>
-          <span class="line"><span class="accent">sebe</span></span>
+          <span class="line"><span>Postani najbolja</span></span>
+          <span class="line"><span>verzija <span class="accent">sebe</span></span></span>
         </h1>
 
         <p class="lead">
           Petnaest godina pravimo jake ljude. Pet sala, više od 50 trenera
-          i plan treninga koji pravi čovek, ne aplikacija.
+          i plan treninga napisan za tebe.
         </p>
 
         <div class="hero-actions">
@@ -1391,20 +1391,23 @@
     <!-- O nama -->
     <section id="o-nama">
       <div class="container">
+        <div class="about-head reveal">
+          <span class="eyebrow">O nama</span>
+          <h2>Već 15&nbsp;godina<br> gradimo&nbsp;disciplinu.</h2>
+        </div>
+
         <div class="about-grid">
           <div class="about-text reveal">
-            <span class="eyebrow">O nama</span>
-            <h2>Teg. Plan. Ponavljanje. Petnaest godina.</h2>
             <p>
               Prvu salu smo otvorili pre 15 godina. Danas ih imamo pet.
               Tri su u Beogradu, dve u Novom Sadu.
             </p>
             <p>
-              Ne prodajemo čudo za 30 dana. Dajemo ti prostor gde možeš ozbiljno
-              da treniraš i ljude koji će te ispraviti kad grešiš.
+              Ovde dobijaš prostor za ozbiljan trening i ljude koji te
+              isprave kad grešiš. Rezultat dolazi za nekoliko meseci i ostaje.
             </p>
             <p>
-              Kod nas trener ne sedi na recepciji. Stoji pored šipke dok ti radiš čučanj.
+              Dok radiš čučanj, trener stoji pored šipke.
             </p>
           </div>
 
@@ -1413,7 +1416,7 @@
 
         <div class="principles">
           <div class="principle reveal">
-            <svg viewBox="0 0 36 36" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true">
               <path d="M6 9h24v15H15l-6 5v-5H6z"/>
               <path d="M12 15h12M12 19h8"/>
             </svg>
@@ -1425,11 +1428,11 @@
           </div>
 
           <div class="principle reveal">
-            <svg viewBox="0 0 36 36" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true">
               <path d="M6 30V6M6 30h24"/>
               <path d="M11 24l6-7 5 4 8-10"/>
             </svg>
-            <h3>Brojke umesto utiska</h3>
+            <h3>Svaki trening je zapisan</h3>
             <p>
               Beležimo svaki trening. Kad ti se čini da stojiš u mestu,
               otvorimo zapis i pogledamo šta se stvarno desilo.
@@ -1437,7 +1440,7 @@
           </div>
 
           <div class="principle reveal">
-            <svg viewBox="0 0 36 36" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true">
               <path d="M3 18h30"/>
               <rect x="7" y="10" width="4" height="16" rx="1"/>
               <rect x="25" y="10" width="4" height="16" rx="1"/>
@@ -1447,7 +1450,7 @@
             <h3>Oprema za težak rad</h3>
             <p>
               Rackovi, olimpijske šipke i platforme za mrtvo dizanje u svakoj sali.
-              Dovoljno da u šest popodne ne čekaš red.
+              Ima ih dovoljno i u šest popodne, kad je sala najpunija.
             </p>
           </div>
         </div>
@@ -1460,7 +1463,7 @@
         <div class="section-head reveal">
           <div>
             <span class="eyebrow">Treneri</span>
-            <h2>Više od 50 trenera. Svaki ima svoju oblast.</h2>
+            <h2>Više od 50&nbsp;trenera.<br> Svaki ima svoju&nbsp;oblast.</h2>
           </div>
           <p class="lead">
             Neko radi snagu i powerlifting. Neko vraća ljude posle povrede.
@@ -1539,7 +1542,7 @@
         <div class="section-head reveal">
           <div>
             <span class="eyebrow">Utisci</span>
-            <h2>Šta se promenilo kod ljudi koji treniraju kod nas.</h2>
+            <h2>Šta se promenilo kod naših&nbsp;članova.</h2>
           </div>
           <div class="t-rating">
             <div class="t-score">4,9</div>
@@ -1553,7 +1556,7 @@
         <div class="t-wrap reveal">
           <div class="t-track" id="t-track" tabindex="0" role="region" aria-label="Utisci članova, pomeraj levo i desno">
             <figure class="t-card">
-              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
               <blockquote>Posle operacije kolena nisam smela da čučnem. Milica me je četiri meseca vodila korak po korak. Sad radim čučanj sa 60 kilograma bez problema.</blockquote>
               <figcaption>
                 <span class="t-name">Jelena M.</span>
@@ -1561,7 +1564,7 @@
               </figcaption>
             </figure>
             <figure class="t-card">
-              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
               <blockquote>Došao sam sa mrtvim dizanjem od 180. Marko mi je promenio start i raspored treninga. Na prošlom državnom prvenstvu digao sam 245.</blockquote>
               <figcaption>
                 <span class="t-name">Stefan R.</span>
@@ -1569,7 +1572,7 @@
               </figcaption>
             </figure>
             <figure class="t-card">
-              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
               <blockquote>Bojala sam se dela sa šipkama, tamo su stalno neki krupni momci. Prvog dana mi je trener pokazao kako da namestim rack. Sad tamo provodim pola treninga.</blockquote>
               <figcaption>
                 <span class="t-name">Ana P.</span>
@@ -1577,7 +1580,7 @@
               </figcaption>
             </figure>
             <figure class="t-card">
-              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
               <blockquote>Imam 54 godine i sedeći posao. Doktor mi je rekao da počnem nešto zbog leđa. Tri puta nedeljno, po sat vremena. Leđa me ne bole od prošle zime.</blockquote>
               <figcaption>
                 <span class="t-name">Dragan K.</span>
@@ -1585,7 +1588,7 @@
               </figcaption>
             </figure>
             <figure class="t-card">
-              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
               <blockquote>Luka mi je napravio ishranu koju mogu da pratim i kad radim noćne smene. Minus 17 kilograma za osam meseci, bez gladovanja.</blockquote>
               <figcaption>
                 <span class="t-name">Milan T.</span>
@@ -1593,7 +1596,7 @@
               </figcaption>
             </figure>
             <figure class="t-card">
-              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
               <blockquote>Igram rukomet. Nikola mi je pre sezone sredio skok i ramena. Prva sezona bez povrede posle tri godine.</blockquote>
               <figcaption>
                 <span class="t-name">Teodora S.</span>
@@ -1601,7 +1604,7 @@
               </figcaption>
             </figure>
             <figure class="t-card">
-              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
               <blockquote>Tri dana nedeljno radim u Novom Sadu, ostalo u Beogradu. Treniram gde se zateknem i ne razmišljam o tome.</blockquote>
               <figcaption>
                 <span class="t-name">Nemanja V.</span>
@@ -1609,23 +1612,23 @@
               </figcaption>
             </figure>
             <figure class="t-card">
-              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
-              <blockquote>Najviše mi znači što se trener seti šta sam radila prošle nedelje. Ne krećem svaki put od nule.</blockquote>
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <blockquote>Najviše mi znači što se trener seti šta sam radila prošle nedelje. Svaki trening nastavlja tamo gde je prethodni stao.</blockquote>
               <figcaption>
                 <span class="t-name">Ivana Đ.</span>
                 <span class="t-meta">Viking Liman · 3 godine</span>
               </figcaption>
             </figure>
             <figure class="t-card">
-              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
-              <blockquote>U šest popodne u drugim teretanama čekaš klupu. Ovde rackova ima dovoljno. Za godinu dana nisam čekao duže od par minuta.</blockquote>
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <blockquote>Dolazim u šest popodne, kad je najveća gužva. Za godinu dana nisam čekao rack duže od par minuta.</blockquote>
               <figcaption>
                 <span class="t-name">Bojan L.</span>
                 <span class="t-meta">Viking Voždovac · 1 godina</span>
               </figcaption>
             </figure>
             <figure class="t-card">
-              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
               <blockquote>Krenula sam sa 61 godinom, ćerka mi je uplatila članarinu za rođendan. Sad nosim kese iz prodavnice na peti sprat bez stajanja.</blockquote>
               <figcaption>
                 <span class="t-name">Marija N.</span>
@@ -1633,7 +1636,7 @@
               </figcaption>
             </figure>
             <figure class="t-card">
-              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
               <blockquote>Personalni paket sam uzeo na mesec dana, da naučim tehniku. Ostao sam godinu. Bench mi je sa 70 otišao na 105.</blockquote>
               <figcaption>
                 <span class="t-name">Aleksandar J.</span>
@@ -1641,8 +1644,8 @@
               </figcaption>
             </figure>
             <figure class="t-card">
-              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
-              <blockquote>Svlačionice su čiste i u devet uveče. Zvuči kao sitnica dok ne probaš drugu teretanu.</blockquote>
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <blockquote>Svlačionice su čiste i u devet uveče. Posle celog dana na poslu, to mi mnogo znači.</blockquote>
               <figcaption>
                 <span class="t-name">Sara B.</span>
                 <span class="t-meta">Viking Novi Beograd · 6 meseci</span>
@@ -1665,7 +1668,7 @@
         <div class="section-head reveal">
           <div>
             <span class="eyebrow">Cenovnik</span>
-            <h2>Izaberi kako treniraš.</h2>
+            <h2>Izaberi kako&nbsp;treniraš.</h2>
           </div>
           <p class="lead">
             Sve cene su mesečne, u dinarima. Klikni na paket i javićemo ti se
@@ -1682,10 +1685,10 @@
               <span class="price-unit">RSD / mesec</span>
             </div>
             <ul>
-              <li><svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Jedna sala po izboru</li>
-              <li><svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Pristup od 06 do 23h</li>
-              <li><svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Uvodni trening sa trenerom</li>
-              <li><svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Svlačionica i ormarić</li>
+              <li><svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Jedna sala po izboru</li>
+              <li><svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Pristup od 06 do 23h</li>
+              <li><svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Uvodni trening sa trenerom</li>
+              <li><svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Svlačionica i ormarić</li>
             </ul>
             <a href="#kontakt" class="btn btn-ghost" data-plan="Osnovna">Izaberi Osnovnu</a>
           </article>
@@ -1699,10 +1702,10 @@
               <span class="price-unit">RSD / mesec</span>
             </div>
             <ul>
-              <li><svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Svih pet sala, oba grada</li>
-              <li><svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Pristup od 06 do 23h</li>
-              <li><svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Plan treninga za prvi mesec</li>
-              <li><svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Trener ti proveri tehniku jednom mesečno</li>
+              <li><svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Svih pet sala, oba grada</li>
+              <li><svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Pristup od 06 do 23h</li>
+              <li><svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Plan treninga za prvi mesec</li>
+              <li><svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Trener ti proveri tehniku jednom mesečno</li>
             </ul>
             <a href="#kontakt" class="btn btn-primary" data-plan="Viking">Izaberi Viking</a>
           </article>
@@ -1715,10 +1718,10 @@
               <span class="price-unit">RSD / mesec</span>
             </div>
             <ul>
-              <li><svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>8 treninga sa trenerom</li>
-              <li><svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Plan ishrane i nedeljna provera</li>
-              <li><svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Članarina za svih pet sala</li>
-              <li><svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Termini koje dogovaraš sa trenerom</li>
+              <li><svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>8 treninga sa trenerom</li>
+              <li><svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Plan ishrane i nedeljna provera</li>
+              <li><svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Članarina za svih pet sala</li>
+              <li><svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"/></svg>Termini koje dogovaraš sa trenerom</li>
             </ul>
             <a href="#kontakt" class="btn btn-ghost" data-plan="Personalni">Izaberi Personalni</a>
           </article>
@@ -1737,7 +1740,7 @@
         <div class="section-head reveal">
           <div>
             <span class="eyebrow">Lokacije</span>
-            <h2>Pet sala. Dva grada.</h2>
+            <h2>Pet&nbsp;sala.<br> Dva&nbsp;grada.</h2>
           </div>
           <p class="lead">
             Sa paketom Viking ulaziš u svaku. Ponedeljak u Beogradu,
@@ -1753,21 +1756,21 @@
           <div class="gyms">
             <div class="gym">
               <div class="gym-name">
-                <svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M9 16s5-4.5 5-8.5A5 5 0 004 7.5C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.8"/></svg>
+                <svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M9 16s5-4.5 5-8.5A5 5 0 004 7.5C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.8"/></svg>
                 Viking Zvezdara
               </div>
               <p>Bulevar kralja Aleksandra 284, Beograd<br>Pon - Ned, 06 - 23h</p>
             </div>
             <div class="gym">
               <div class="gym-name">
-                <svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M9 16s5-4.5 5-8.5A5 5 0 004 7.5C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.8"/></svg>
+                <svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M9 16s5-4.5 5-8.5A5 5 0 004 7.5C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.8"/></svg>
                 Viking Novi Beograd
               </div>
               <p>Jurija Gagarina 36, Novi Beograd<br>Pon - Ned, 06 - 23h</p>
             </div>
             <div class="gym">
               <div class="gym-name">
-                <svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M9 16s5-4.5 5-8.5A5 5 0 004 7.5C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.8"/></svg>
+                <svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M9 16s5-4.5 5-8.5A5 5 0 004 7.5C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.8"/></svg>
                 Viking Voždovac
               </div>
               <p>Vojvode Stepe 158, Beograd<br>Pon - Ned, 06 - 23h</p>
@@ -1783,14 +1786,14 @@
           <div class="gyms">
             <div class="gym">
               <div class="gym-name">
-                <svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M9 16s5-4.5 5-8.5A5 5 0 004 7.5C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.8"/></svg>
+                <svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M9 16s5-4.5 5-8.5A5 5 0 004 7.5C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.8"/></svg>
                 Viking Liman
               </div>
               <p>Bulevar oslobođenja 102, Novi Sad<br>Pon - Ned, 06 - 23h</p>
             </div>
             <div class="gym">
               <div class="gym-name">
-                <svg viewBox="0 0 18 18" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M9 16s5-4.5 5-8.5A5 5 0 004 7.5C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.8"/></svg>
+                <svg viewBox="0 0 18 18" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M9 16s5-4.5 5-8.5A5 5 0 004 7.5C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.8"/></svg>
                 Viking Grbavica
               </div>
               <p>Futoška 54, Novi Sad<br>Pon - Ned, 06 - 23h</p>
@@ -1806,7 +1809,7 @@
         <div class="contact-grid">
           <div class="reveal">
             <span class="eyebrow">Kontakt</span>
-            <h2>Izaberi paket. Mi zovemo.</h2>
+            <h2>Izaberi&nbsp;paket.<br> Mi&nbsp;zovemo.</h2>
             <p class="lead">
               Ostavi ime i broj. Trener iz sale koju izabereš javiće ti se
               da dogovorite prvi trening.
@@ -1814,15 +1817,15 @@
 
             <ul class="contact-list">
               <li>
-                <svg viewBox="0 0 20 20" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M4 3h3l1.5 4-2 1.5a10 10 0 005 5l1.5-2 4 1.5v3a1 1 0 01-1 1C9 17 3 11 3 4a1 1 0 011-1z"/></svg>
+                <svg viewBox="0 0 20 20" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><path d="M4 3h3l1.5 4-2 1.5a10 10 0 005 5l1.5-2 4 1.5v3a1 1 0 01-1 1C9 17 3 11 3 4a1 1 0 011-1z"/></svg>
                 <div><span>Telefon</span><a href="tel:+381000000000">+381 00 000 0000</a></div>
               </li>
               <li>
-                <svg viewBox="0 0 20 20" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="1"/><path d="M3 5l7 6 7-6"/></svg>
+                <svg viewBox="0 0 20 20" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="1"/><path d="M3 5l7 6 7-6"/></svg>
                 <div><span>Email</span><a href="mailto:info@vikinggym.rs">info@vikinggym.rs</a></div>
               </li>
               <li>
-                <svg viewBox="0 0 20 20" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="4"/><circle cx="10" cy="10" r="3.2"/><circle cx="14.2" cy="5.8" r=".6" fill="#e2741f"/></svg>
+                <svg viewBox="0 0 20 20" fill="none" stroke="#8fafc4" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="4"/><circle cx="10" cy="10" r="3.2"/><circle cx="14.2" cy="5.8" r=".6" fill="#8fafc4"/></svg>
                 <div><span>Instagram</span><a href="#">@vikinggym</a></div>
               </li>
             </ul>
@@ -1880,7 +1883,7 @@
   <footer class="footer">
     <div class="container">
       <a href="#pocetak" class="logo">
-        <svg viewBox="0 0 40 40" fill="none" stroke="#e2741f" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" stroke="#8fafc4" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 6c0 6 3 10 8 11M32 6c0 6-3 10-8 11"/>
           <path d="M12 18h16v8l-4 4v6h-8v-6l-4-4z"/>
           <path d="M16 23h3M21 23h3M20 26v7"/>
