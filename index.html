@@ -208,6 +208,7 @@
 
     .logo {
       display: flex;
+      white-space: nowrap;
       align-items: center;
       gap: 12px;
       font-family: var(--font-head);
@@ -228,6 +229,7 @@
 
     .nav-links a {
       touch-action: manipulation;
+      white-space: nowrap;
       font-size: 14px;
       font-weight: 500;
       letter-spacing: 0.06em;
@@ -236,7 +238,7 @@
       transition: color 0.2s;
     }
 
-    .nav .btn { min-height: 44px; padding: 0 20px; font-size: 13px; }
+    .nav .btn { min-height: 44px; padding: 0 20px; font-size: 13px; white-space: nowrap; }
 
     .nav-toggle {
       display: none;
@@ -603,6 +605,168 @@
       color: var(--muted);
     }
 
+    /* ---------- Utisci ---------- */
+    .t-rating {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      justify-self: start;
+    }
+
+    .t-score {
+      font-family: var(--font-head);
+      font-size: 72px;
+      line-height: 1;
+    }
+
+    .t-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 6px;
+    }
+
+    .t-stars svg { width: 18px; height: 18px; fill: var(--accent); }
+
+    .t-count { font-size: 14px; color: var(--muted); }
+
+    .t-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% - 72px) / 3.25);
+      gap: 24px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      border-radius: var(--radius);
+    }
+
+    .t-track::-webkit-scrollbar { display: none; }
+
+    .t-card {
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 32px;
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .t-quote { width: 32px; height: 24px; margin-bottom: 20px; }
+
+    .t-card blockquote {
+      flex-grow: 1;
+      margin: 0 0 28px;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .t-card figcaption {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .t-name {
+      font-family: var(--font-head);
+      font-size: 24px;
+      letter-spacing: 0.03em;
+      line-height: 1.1;
+    }
+
+    .t-meta { font-size: 14px; color: var(--muted); }
+
+    /* Kartice rastu i dobijaju punu boju dok ulaze u sredinu niza.
+       Animacija prati skrol; gde je pregledac ne podrzava, kartice su mirne. */
+    @supports (animation-timeline: view()) {
+      .t-card {
+        animation: t-view linear both;
+        animation-timeline: view(inline);
+      }
+    }
+
+    @keyframes t-view {
+      entry 0%   { opacity: 0.35; transform: scale(0.94); }
+      entry 100% { opacity: 1; transform: none; }
+      exit 0%    { opacity: 1; transform: none; }
+      exit 100%  { opacity: 0.35; transform: scale(0.94); }
+    }
+
+    .t-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .t-progress {
+      position: relative;
+      flex-grow: 1;
+      height: 2px;
+      margin-right: 12px;
+      background: var(--line);
+      overflow: hidden;
+    }
+
+    .t-bar {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 30%;
+      background: var(--accent);
+      transition: transform 120ms linear;
+    }
+
+    .t-btn {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      color: var(--text);
+      background: transparent;
+      border: 1px solid #4a443e;
+      border-radius: var(--radius);
+      cursor: pointer;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
+      transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        opacity 0.2s ease,
+        transform 160ms var(--ease-out);
+    }
+
+    .t-btn svg { width: 20px; height: 20px; }
+    .t-btn:active { transform: scale(0.95); }
+    .t-btn[aria-disabled="true"] { opacity: 0.35; cursor: default; }
+
+    @media (max-width: 1000px) {
+      .t-track { grid-auto-columns: calc((100% - 48px) / 2.25); }
+    }
+
+    @media (max-width: 768px) {
+      .t-track {
+        grid-auto-columns: 85%;
+        gap: 16px;
+      }
+      .t-card { padding: 24px; }
+      .t-card blockquote { font-size: 16px; }
+      .t-score { font-size: 56px; }
+      .t-controls { margin-top: 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .t-card { animation: none; }
+      .t-track { scroll-behavior: auto; }
+    }
+
     /* ---------- Cenovnik ---------- */
     .pricing {
       display: grid;
@@ -929,6 +1093,8 @@
       .nav-links a:hover,
       .footer-links a:hover { color: var(--text); }
 
+      .t-btn:not([aria-disabled="true"]):hover { border-color: var(--accent); color: var(--accent); }
+
       .coach:hover .coach-img { transform: scale(1.04); }
 
       .coach:hover .coach-info {
@@ -964,15 +1130,8 @@
       .nav-links { gap: 24px; }
     }
 
-    @media (max-width: 768px) {
-      :root {
-        --section-y: 80px;
-        --gutter: 20px;
-        --nav-h: 64px;
-      }
-
-      body { font-size: 16px; }
-
+    /* Meni u dugme sa tri crte cim horizontalni meni nema mesta */
+    @media (max-width: 1100px) {
       .nav-toggle { display: flex; }
       .nav .btn { display: none; }
 
@@ -1012,6 +1171,16 @@
         padding: 0;
         color: var(--on-accent);
       }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --section-y: 80px;
+        --gutter: 20px;
+        --nav-h: 64px;
+      }
+
+      body { font-size: 16px; }
 
       .hero { padding: calc(var(--nav-h) + 40px) 0 48px; }
       .hero h1 { margin-bottom: 24px; }
@@ -1323,6 +1492,132 @@
       </div>
     </section>
 
+    <!-- Utisci -->
+    <section id="utisci">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Utisci</span>
+            <h2>Šta se promenilo kod ljudi koji treniraju kod nas.</h2>
+          </div>
+          <div class="t-rating">
+            <div class="t-score">4,9</div>
+            <div>
+              <div class="t-stars" aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg></div>
+              <div class="t-count">412 ocena na Google-u</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="t-wrap reveal">
+          <div class="t-track" id="t-track" tabindex="0" role="region" aria-label="Utisci članova, pomeraj levo i desno">
+            <figure class="t-card">
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <blockquote>Posle operacije kolena nisam smela da čučnem. Milica me je četiri meseca vodila korak po korak. Sad radim čučanj sa 60 kilograma bez problema.</blockquote>
+              <figcaption>
+                <span class="t-name">Jelena M.</span>
+                <span class="t-meta">Viking Zvezdara · 2 godine</span>
+              </figcaption>
+            </figure>
+            <figure class="t-card">
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <blockquote>Došao sam sa mrtvim dizanjem od 180. Marko mi je promenio start i raspored treninga. Na prošlom državnom prvenstvu digao sam 245.</blockquote>
+              <figcaption>
+                <span class="t-name">Stefan R.</span>
+                <span class="t-meta">Viking Novi Beograd · 4 godine</span>
+              </figcaption>
+            </figure>
+            <figure class="t-card">
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <blockquote>Bojala sam se dela sa šipkama, tamo su stalno neki krupni momci. Prvog dana mi je trener pokazao kako da namestim rack. Sad tamo provodim pola treninga.</blockquote>
+              <figcaption>
+                <span class="t-name">Ana P.</span>
+                <span class="t-meta">Viking Liman · 1 godina</span>
+              </figcaption>
+            </figure>
+            <figure class="t-card">
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <blockquote>Imam 54 godine i sedeći posao. Doktor mi je rekao da počnem nešto zbog leđa. Tri puta nedeljno, po sat vremena. Leđa me ne bole od prošle zime.</blockquote>
+              <figcaption>
+                <span class="t-name">Dragan K.</span>
+                <span class="t-meta">Viking Voždovac · 3 godine</span>
+              </figcaption>
+            </figure>
+            <figure class="t-card">
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <blockquote>Luka mi je napravio ishranu koju mogu da pratim i kad radim noćne smene. Minus 17 kilograma za osam meseci, bez gladovanja.</blockquote>
+              <figcaption>
+                <span class="t-name">Milan T.</span>
+                <span class="t-meta">Viking Grbavica · 8 meseci</span>
+              </figcaption>
+            </figure>
+            <figure class="t-card">
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <blockquote>Igram rukomet. Nikola mi je pre sezone sredio skok i ramena. Prva sezona bez povrede posle tri godine.</blockquote>
+              <figcaption>
+                <span class="t-name">Teodora S.</span>
+                <span class="t-meta">Viking Zvezdara · 2 godine</span>
+              </figcaption>
+            </figure>
+            <figure class="t-card">
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <blockquote>Tri dana nedeljno radim u Novom Sadu, ostalo u Beogradu. Treniram gde se zateknem i ne razmišljam o tome.</blockquote>
+              <figcaption>
+                <span class="t-name">Nemanja V.</span>
+                <span class="t-meta">Viking paket · 1 godina</span>
+              </figcaption>
+            </figure>
+            <figure class="t-card">
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <blockquote>Najviše mi znači što se trener seti šta sam radila prošle nedelje. Ne krećem svaki put od nule.</blockquote>
+              <figcaption>
+                <span class="t-name">Ivana Đ.</span>
+                <span class="t-meta">Viking Liman · 3 godine</span>
+              </figcaption>
+            </figure>
+            <figure class="t-card">
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <blockquote>U šest popodne u drugim teretanama čekaš klupu. Ovde rackova ima dovoljno. Za godinu dana nisam čekao duže od par minuta.</blockquote>
+              <figcaption>
+                <span class="t-name">Bojan L.</span>
+                <span class="t-meta">Viking Voždovac · 1 godina</span>
+              </figcaption>
+            </figure>
+            <figure class="t-card">
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <blockquote>Krenula sam sa 61 godinom, ćerka mi je uplatila članarinu za rođendan. Sad nosim kese iz prodavnice na peti sprat bez stajanja.</blockquote>
+              <figcaption>
+                <span class="t-name">Marija N.</span>
+                <span class="t-meta">Viking Grbavica · 2 godine</span>
+              </figcaption>
+            </figure>
+            <figure class="t-card">
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <blockquote>Personalni paket sam uzeo na mesec dana, da naučim tehniku. Ostao sam godinu. Bench mi je sa 70 otišao na 105.</blockquote>
+              <figcaption>
+                <span class="t-name">Aleksandar J.</span>
+                <span class="t-meta">Viking Zvezdara · 1 godina</span>
+              </figcaption>
+            </figure>
+            <figure class="t-card">
+              <svg class="t-quote" viewBox="0 0 32 24" fill="none" stroke="#e2741f" stroke-width="1.6" aria-hidden="true"><path d="M3 21v-7c0-6 3-10 9-11M18 21v-7c0-6 3-10 9-11"/><path d="M3 14h8v7H3zM18 14h8v7h-8z"/></svg>
+              <blockquote>Svlačionice su čiste i u devet uveče. Zvuči kao sitnica dok ne probaš drugu teretanu.</blockquote>
+              <figcaption>
+                <span class="t-name">Sara B.</span>
+                <span class="t-meta">Viking Novi Beograd · 6 meseci</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="t-controls">
+            <div class="t-progress" aria-hidden="true"><span class="t-bar" id="t-bar"></span></div>
+            <button class="t-btn" id="t-prev" type="button" aria-label="Prethodni utisak"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+            <button class="t-btn" id="t-next" type="button" aria-label="Sledeći utisak"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Cenovnik -->
     <section id="cenovnik">
       <div class="container">
@@ -1599,7 +1894,7 @@
       onScroll();
 
       // Mobilni meni
-      var mq = window.matchMedia("(max-width: 768px)");
+      var mq = window.matchMedia("(max-width: 1100px)");
       function syncCta() { cta.hidden = !mq.matches; }
       mq.addEventListener ? mq.addEventListener("change", syncCta) : mq.addListener(syncCta);
       syncCta();
@@ -1651,6 +1946,43 @@
       document.addEventListener("click", function (e) {
         if (!e.target.closest(".coach")) closeCoaches(null);
       });
+
+      // Utisci: strelice, traka napretka, stanje na pocetku i kraju niza
+      var tTrack = document.getElementById("t-track");
+      var tBar = document.getElementById("t-bar");
+      var tPrev = document.getElementById("t-prev");
+      var tNext = document.getElementById("t-next");
+
+      function tStep() {
+        var card = tTrack.querySelector(".t-card");
+        var gap = parseFloat(getComputedStyle(tTrack).columnGap) || 0;
+        return card.getBoundingClientRect().width + gap;
+      }
+
+      function tUpdate() {
+        var max = tTrack.scrollWidth - tTrack.clientWidth;
+        var x = tTrack.scrollLeft;
+        tBar.style.width = (tTrack.clientWidth / tTrack.scrollWidth) * 100 + "%";
+        tBar.style.transform = "translateX(" + (x / tTrack.clientWidth) * 100 + "%)";
+        tPrev.setAttribute("aria-disabled", x <= 2 ? "true" : "false");
+        tNext.setAttribute("aria-disabled", x >= max - 2 ? "true" : "false");
+      }
+
+      var tTicking = false;
+      tTrack.addEventListener("scroll", function () {
+        if (tTicking) return;
+        tTicking = true;
+        requestAnimationFrame(function () { tUpdate(); tTicking = false; });
+      }, { passive: true });
+      window.addEventListener("resize", tUpdate);
+
+      tPrev.addEventListener("click", function () {
+        tTrack.scrollBy({ left: -tStep(), behavior: reduceMotion.matches ? "auto" : "smooth" });
+      });
+      tNext.addEventListener("click", function () {
+        tTrack.scrollBy({ left: tStep(), behavior: reduceMotion.matches ? "auto" : "smooth" });
+      });
+      tUpdate();
 
       // Forma i provera polja
       var form = document.getElementById("signup-form");
