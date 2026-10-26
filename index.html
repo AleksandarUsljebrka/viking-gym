@@ -1257,6 +1257,47 @@
       .footer-links { flex-wrap: wrap; gap: 16px 24px; }
     }
 
+    /* Telefon: linije samo izmedju sekcija i oko kartica.
+       Vertikalne linije izmedju kolona sa veceg ekrana ovde bi postale
+       niz horizontalnih, pa stavke razdvajamo razmakom. */
+    @media (max-width: 768px) {
+      .stats { padding-top: 12px; }
+      .stat,
+      .stat + .stat {
+        padding: 10px 0;
+        border: 0;
+      }
+
+      .principles {
+        gap: 40px;
+        margin-top: 56px;
+        border-top: 0;
+      }
+      .principle,
+      .principle + .principle {
+        padding: 0;
+        border: 0;
+      }
+
+      .gyms { gap: 22px; padding-top: 22px; }
+      .gym,
+      .gym + .gym {
+        padding: 0;
+        border: 0;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 18px;
+        margin-top: 36px;
+        border-top: 0;
+      }
+      .contact-list li {
+        padding: 0;
+        border-bottom: 0;
+      }
+    }
+
     @media (orientation: landscape) and (max-height: 520px) {
       .hero { padding-top: calc(var(--nav-h) + 20px); }
       .hero .eyebrow { display: none; }
